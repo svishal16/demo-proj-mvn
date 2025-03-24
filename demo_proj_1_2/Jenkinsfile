@@ -14,5 +14,11 @@ pipeline {
                 mv ./mykeystore.jks ./src/main/resources
             }
         }
+
+        stage('Check application'){
+            steps{
+                sh 'curl -k https://localhost/api/hello'
+            }
+        }
     }
 }
