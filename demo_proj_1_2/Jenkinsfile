@@ -4,14 +4,16 @@ pipeline {
     stages{
         stage('Generate Certificate'){
             steps{
-                keytool -genkeypair -alias domainname.com \
-                    -keyalg RSA -keysize 2048 \
-                    -dname "CN=domainname.com, OU=Devops, O=wiz4host, L=Jhansi, ST=UP, C=IN" \
-                    -validity 3650 \
-                    -keypass coti123pass \
-                    -keystore mykeystore.jks \
-                    -storepass coti123pass
-                mv ./mykeystore.jks ./src/main/resources
+                sh '''
+                    keytool -genkeypair -alias domainname.com \
+                        -keyalg RSA -keysize 2048 \
+                        -dname "CN=domainname.com, OU=Devops, O=wiz4host, L=Jhansi, ST=UP, C=IN" \
+                        -validity 3650 \
+                        -keypass coti123pass \
+                        -keystore mykeystore.jks \
+                        -storepass coti123pass
+                '''
+                sh 'mv ./mykeystore.jks ./src/main/resources'
             }
         }
 
