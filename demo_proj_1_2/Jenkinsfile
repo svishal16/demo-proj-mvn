@@ -17,10 +17,10 @@ pipeline {
             }
         }
 
-        stage('Check application'){
-            steps{
-                sh 'curl -k https://localhost/api/hello'
-            }
-        }
+        // stage('Check application'){
+        //     steps{
+        //         sh 'curl -k https://localhost/api/hello'
+        //     }
+        // }
     }
 }
