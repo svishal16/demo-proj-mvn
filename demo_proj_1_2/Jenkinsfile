@@ -13,7 +13,7 @@ pipeline {
                         -keystore mykeystore.jks \
                         -storepass coti123pass
                 '''
-                sh 'mv ./mykeystore.jks ./src/main/resources'
+                sh 'mv ./demo_proj_1_2/mykeystore.jks ./src/main/resources'
             }
         }
 
