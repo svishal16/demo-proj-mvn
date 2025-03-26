@@ -2,6 +2,11 @@ pipeline {
     agent any
 
     stages{
+        stage('Fetch Code'){
+            steps{
+                git branch: 'main', url: 'https://github.com/svishal16/demo-proj-mvn.git'
+            }
+        }
         stage('Generate Certificate'){
             steps{
                 sh '''
