@@ -36,5 +36,14 @@ pipeline {
         //         sh 'curl -k https://localhost/api/hello'
         //     }
         // }
+
+        stage('Export Certificate'){
+            steps{
+                dir('demo_proj_1_2') {
+                    sh ' keytool -export -alias domainname.com -file domainname.com.crt -keystore src/main/resources/mykeystore.jks -storepass coti123pass'
+                }
+            }
+        }
+
     }
 }
