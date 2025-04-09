@@ -24,9 +24,11 @@ pipeline {
 
         stage('Build Image'){
             steps{
-                sh 'mvn clean package -DskipTests'
-                sh 'docker build -t springboot-ssl-app .'
-                sh 'docker run -d -p 443:443 --name ssl-app springboot-ssl-app'
+                dir('demo_proj_1_2') {
+                    sh 'mvn clean package -DskipTests'
+                    sh 'docker build -t springboot-ssl-app .'
+                    sh 'docker run -d -p 443:443 --name ssl-app springboot-ssl-app'
+                }
             }
         }
         // stage('Check application'){
